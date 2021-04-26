@@ -21,7 +21,7 @@ const CardApp = ({
 
   //Efects
   useEffect(() => {
-    console.log('El objeto !!!!!!!', obj);
+    // console.log('El objeto !!!!!!!', obj);
   }, [])
   
   //Normal functions

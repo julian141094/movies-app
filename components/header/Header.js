@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState }from 'react'
 import type {Node} from 'react';
 import {
   SafeAreaView,
@@ -17,47 +17,58 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { Input, Button, Overlay } from 'react-native-elements';
 
 
-const MyCustomLeftComponent = () => {
-  return (
-    <Button
-      type={'clear'}
-      icon={
-        <Icon
-          name="filter"
-          size={24}
-          color="white"
+
+const HeaderApp = ({openModal, updateField, nameField}) => {
+  
+  const MyCustomLeftComponent = () => {
+    return (
+      <View>
+        <Button
+          type={'clear'}
+          onPress={() => {
+            openModal()
+          }}
+          icon={
+            <Icon
+              name="filter"
+              size={24}
+              color="white"
+            />
+          }
         />
-      }
-    />
-  )
-}
+      </View>
+    )
+  }
+  
+  const MyCustomRightComponent = () => {
+    return (
+      <Button
+        type={'clear'}
+        icon={
+          <Icon
+            name="search"
+            size={24}
+            color="white"
+          />
+        }
+      />
+    )
+  }
+  
+  
+  const InputSearch = () => {
+    return (
+      <Input
+        // value={nameField}
+        placeholder='Search...'
+        // onChangeText={(name) => updateField(name)}
+        style={styles.nameField}
+        // leftIcon={{ type: 'font-awesome', name: 'chevron-left' }}
+      />
+    )
+  }
+  
 
-const MyCustomRightComponent = () => {
-  return (
-    <Button
-      type={'clear'}
-      icon={
-        <Icon
-          name="search"
-          size={24}
-          color="white"
-        />
-      }
-    />
-  )
-}
-
-
-const InputSearch = () => {
-  return (
-    <Input
-      placeholder='Search...'
-      // leftIcon={{ type: 'font-awesome', name: 'chevron-left' }}
-    />
-  )
-}
-
-const HeaderApp : () => Node = () => {
   return (
     <SafeAreaView>
       <Header
@@ -98,6 +109,9 @@ const styles = StyleSheet.create({
   test: {
     backgroundColor: 'red'
   },
+  nameField: {
+    color: 'white'
+  }
 });
 
 export default HeaderApp
